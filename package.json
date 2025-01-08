@@ -21,12 +21,17 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
+    "dev": "tsc -w",
+    "clean": "rm -rf build",
+    "prebuild": "yarn clean",
     "format": "yarn workspaces foreach --topological-dev --parallel --verbose run format",
     "format-text": "prettier --write \"./*.md\" \"./docs/*.md\" && yarn workspaces foreach --topological-dev --parallel --verbose run format-text",
     "format-shell": "shfmt -w scripts packages",
     "lint": "yarn workspaces foreach --topological-dev --parallel --verbose run lint",
     "lint-fix": "yarn workspaces foreach --topological-dev --parallel --verbose run lint-fix",
-    "test": "node ./node_modules/mocha/bin/mocha --timeout 60000",
+    "test": "node ./node_modules/mocha/bin/mocha --timeout 60000 --exit",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "nyc yarn test",
     "test-unit": "yarn workspaces foreach --topological-dev --parallel --verbose run test",
     "test-firefox": "yarn workspaces foreach --topological-dev --parallel --verbose run test-firefox",
     "test-chrome": "yarn workspaces foreach --topological-dev --parallel --verbose run test-chrome",
@@ -39,24 +44,29 @@
     "proto-gen": "sh ./scripts/protocgen.sh"
   },
   "devDependencies": {
-    "@cosmjs/amino": "0.27.1",
-    "@cosmjs/cosmwasm-stargate": "0.27.1",
-    "@cosmjs/crypto": "0.27.1",
-    "@cosmjs/encoding": "0.27.1",
-
-    "@uptickjs/proto-types": "0.27.18",
-    "@uptickjs/proto-signing": "0.27.18",
-    "@uptickjs/stargate": "0.27.19",
-
-    "chai": "4.3.4",
+    "@cosmjs/amino": "^0.31.1",
+    "@cosmjs/cosmwasm-stargate": "^0.31.1",
+    "@cosmjs/crypto": "^0.31.1",
+    "@cosmjs/encoding": "^0.31.1",
+    "@uptickjs/proto-types": "^0.27.18",
+    "@uptickjs/proto-signing": "^0.27.18",
+    "@uptickjs/stargate": "^0.27.19",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "nyc": "^15.1.0",
+    "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^7.5",
-    "mocha": "^8.2.1",
-    "prettier": "^2.4.1",
-    "typescript": "~4.4"
+    "eslint": "^8.45.0",
+    "mocha": "^10.2.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
     "@hanchon/evmos-ts-wallet": "^0.2.0",
     "@keplr-wallet/crypto": "^0.12.44"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "yarn": ">=1.22.0"
   }
 }
