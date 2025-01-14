@@ -1,7 +1,7 @@
 # Hacking CosmJS
 
-Welcome to CosmJS, glad to see you here. This document explains all you need to
-work on CosmJS, i.e. modify it. It is not intended for users of CosmJS.
+Welcome to CosmJS, glad to see you here. This document explains all you need to work on CosmJS, i.e. modify it. It is
+not intended for users of CosmJS.
 
 ## Prerequisite
 
@@ -14,18 +14,15 @@ work on CosmJS, i.e. modify it. It is not intended for users of CosmJS.
 
 ## Checking out code
 
-We use Git for version control. In addition to the well-known basics, we use the
-extension Git Large File Storage (LFS) to store blobs (currently \*.png and
-\*.wasm). A git-lfs package is available directly in modern package repositories
-(Debian 10+, Ubuntu 18.04+, Homebrew, MacPorts) and as a backport for older
-systems. Please see [this website](https://git-lfs.github.com/) for instructions
-how to install it.
+We use Git for version control. In addition to the well-known basics, we use the extension Git Large File Storage (LFS)
+to store blobs (currently \*.png and \*.wasm). A git-lfs package is available directly in modern package repositories
+(Debian 10+, Ubuntu 18.04+, Homebrew, MacPorts) and as a backport for older systems. Please
+see [this website](https://git-lfs.github.com/) for instructions how to install it.
 
-If you installed git-lfs after cloning this repo, use this command to replace
-the links with the original files: `git lfs fetch && git lfs checkout`.
+If you installed git-lfs after cloning this repo, use this command to replace the links with the original
+files: `git lfs fetch && git lfs checkout`.
 
-To verify everything worked as expected, check if the testing contracts are
-correctly checked out:
+To verify everything worked as expected, check if the testing contracts are correctly checked out:
 
 ```sh
 cd scripts/launchpad/contracts
@@ -45,10 +42,9 @@ For unit tests that don't connect to any blockchain, just do:
 yarn test
 ```
 
-To run the entire test suite, you need to run some local blockchain to test
-against. We use [wasmd](https://github.com/CosmWasm/wasmd) for both CosmWasm
-tests and as a generic Cosmos SDK 0.39 (Launchpad) blockchain. We also spawn
-multiple versions of raw Tendermint and a basic WebSocket server.
+To run the entire test suite, you need to run some local blockchain to test against. We
+use [wasmd](https://github.com/CosmWasm/wasmd) for both CosmWasm tests and as a generic Cosmos SDK 0.39 (Launchpad)
+blockchain. We also spawn multiple versions of raw Tendermint and a basic WebSocket server.
 
 ```sh
 # Start wasmd
@@ -89,9 +85,8 @@ yarn lint-fix
 
 ## Ports
 
-In the `scripts/` folder, a bunch of blockchains and other backend systems are
-started for testing purposes. Some ports need to be changed from the default in
-order to avoid conflicts. Here is an overview of the ports used:
+In the `scripts/` folder, a bunch of blockchains and other backend systems are started for testing purposes. Some ports
+need to be changed from the default in order to avoid conflicts. Here is an overview of the ports used:
 
 | Port  | Application           | Usage                           |
 | ----- | --------------------- | ------------------------------- |

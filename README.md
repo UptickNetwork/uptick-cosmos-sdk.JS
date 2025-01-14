@@ -5,24 +5,22 @@
   </a>
 </div>
 
-Uptick-Chain-SDK.JS is the Swiss Army knife to power JavaScript based client solutions
-ranging from Web apps/explorers over browser extensions to server-side clients
-like faucets/scrapers in the Uptick ecosystem.
+Uptick-Chain-SDK.JS is the Swiss Army knife to power JavaScript based client solutions ranging from Web apps/explorers
+over browser extensions to server-side clients like faucets/scrapers in the Uptick ecosystem.
 
 "JS" is short for _runs everywhere_ – we actually develop in TypeScript.
 
 ## Documentation
 
-[Here is a list of examples][guided tour] using the Stargate package for use
-with [Cosmos SDK 0.46] applications . Take a look at the wiki
-page,
+[Here is a list of examples][guided tour] using the Stargate package for use with [Cosmos SDK 0.46] applications . Take
+a look at the wiki page,
 ["What can UptickJS do for me?"](https://github.com/cosmos/cosmjs/wiki/What-can-UptickJS-do-for-me%3F)
 and various tests
 ([ex](https://github.com/cosmos/cosmjs/blob/main/packages/stargate/src/signingstargateclient.spec.ts))
 for more example usage of the packages.
 
 [guided tour]:
-  https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9
+https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9
 
 [cosmos sdk 0.41]: https://github.com/cosmos/cosmos-sdk/tree/v0.41.0
 
@@ -30,25 +28,21 @@ for more example usage of the packages.
 
 ### API documentation
 
-The full API documentation is hosted at [cosmos.github.io/cosmjs]. This is a bit
-tricky to navigate and requires basic TypeScript understanding. It is helpful if
-you have want to look up details for advanced use cases. This documentation is
-auto-generated based on the current main branch and can occasionally diverge
-from the latest release.
+The full API documentation is hosted at [cosmos.github.io/cosmjs]. This is a bit tricky to navigate and requires basic
+TypeScript understanding. It is helpful if you have want to look up details for advanced use cases. This documentation
+is auto-generated based on the current main branch and can occasionally diverge from the latest release.
 
 [cosmos.github.io/cosmjs]: https://cosmos.github.io/cosmjs
 
 ### Using custom Stargate modules
 
-Documentation on how to use your own custom modules with UptickJS for Stargate
-chains (Cosmos SDK v0.41) can be found
+Documentation on how to use your own custom modules with UptickJS for Stargate chains (Cosmos SDK v0.41) can be found
 [here](https://github.com/cosmos/cosmjs/blob/main/packages/stargate/CUSTOM_PROTOBUF_CODECS.md).
 
 ## Packages
 
 UptickJS is a library that consists of many smaller npm packages within the
-[@cosmjs namespace](https://www.npmjs.com/org/cosmjs), a so called monorepo.
-Here are some of them to get an idea:
+[@cosmjs namespace](https://www.npmjs.com/org/cosmjs), a so called monorepo. Here are some of them to get an idea:
 
 | Package                                                 | Description                                                                                                                                                                                                                              | Latest                                                                                                                                |
 | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -61,15 +55,14 @@ Here are some of them to get an idea:
 
 ### Modularity
 
-We're pretty proud of the modularity and a clean dependency tree in this
-monorepo. This ensures software quality on our side and lets users pick exactly
-what they need. Here you see how everything fits together (every item is a npm
-package; right depends on left):
+We're pretty proud of the modularity and a clean dependency tree in this monorepo. This ensures software quality on our
+side and lets users pick exactly what they need. Here you see how everything fits together (every item is a npm package;
+right depends on left):
 
 ![UptickJS dependency tree](docs/cosmjs-tree.png)
 
-If this was not enough to scare you away, check out the version including app
-runtime dependencies: [cosmjs-tree-full.png](docs/cosmjs-tree-full.png).
+If this was not enough to scare you away, check out the version including app runtime
+dependencies: [cosmjs-tree-full.png](docs/cosmjs-tree-full.png).
 
 <!--
 Build with depsight (https://github.com/webmaster128/depsight), using:
@@ -84,28 +77,25 @@ optipng docs/cosmjs-tree*.png
 Currently the codebase supports the following runtime environments:
 
 1. Node.js 12+
-   
+
 2. Modern browsers (Chromium/Firefox/Safari, no Internet Explorer or
    [Edge Spartan](https://en.wikipedia.org/wiki/Microsoft_Edge#Development))
-   
+
 3. Browser extensions (Chromium/Firefox)
 
-Our current JavaScript target standard is ES2018. We use WebAssembly to
-implement certain cryptographic functions.
+Our current JavaScript target standard is ES2018. We use WebAssembly to implement certain cryptographic functions.
 
-We're happy to adjust this list according to users' needs as long as you don't
-ask for Internet Explorer support. If your environment does not support Wasm, we
-can work on a solution with swappable implementations.
+We're happy to adjust this list according to users' needs as long as you don't ask for Internet Explorer support. If
+your environment does not support Wasm, we can work on a solution with swappable implementations.
 
 ## Roadmap
 
 We maintain a [development board](https://github.com/orgs/cosmos/projects/6),
-use [release milestones](https://github.com/cosmos/cosmjs/milestones) and share
-important updates in the [CosmWasm Community Call]. For higher level roadmap
-discussion please reach out to the team.
+use [release milestones](https://github.com/cosmos/cosmjs/milestones) and share important updates in
+the [CosmWasm Community Call]. For higher level roadmap discussion please reach out to the team.
 
 [cosmwasm community call]:
-  https://github.com/CosmWasm/cosmwasm/issues?q=label%3A%22Community+Call+%F0%9F%97%BA%F0%9F%93%9E%22
+https://github.com/CosmWasm/cosmwasm/issues?q=label%3A%22Community+Call+%F0%9F%97%BA%F0%9F%93%9E%22
 
 ## Known limitations
 
@@ -113,40 +103,33 @@ discussion please reach out to the team.
 
 1. When connecting to a Cosmos SDK 0.44+ backend, the verified queries from
    `AuthExtension` and `BankExtension` as well as
-   `StargateClient.getAccountVerified` will fail because the storage keys are
-   not stable. Unverified queries can be used instead. Those queries are
-   deprecated now and will be removed in 0.27 ([#910]).
+   `StargateClient.getAccountVerified` will fail because the storage keys are not stable. Unverified queries can be used
+   instead. Those queries are deprecated now and will be removed in 0.27 ([#910]).
 
 [#910]: https://github.com/cosmos/cosmjs/pull/910
 
 ### 0.25
 
-1. Decoding blocks of height 1 is unsupported. This is fixed in [#815] and will
-   be released as part of UptickJS 0.26.
+1. Decoding blocks of height 1 is unsupported. This is fixed in [#815] and will be released as part of UptickJS 0.26.
 
 [#815]: https://github.com/cosmos/cosmjs/pull/815
 
 ### 0.24
 
 1. `AuthExtension` and all higher level Stargate clients only support
-   `BaseAccount`s for all functionality, including getting account numbers and
-   sequences for transaction signing. This will be implemented for all common
-   Cosmos SDK account types in the 0.25 series.
+   `BaseAccount`s for all functionality, including getting account numbers and sequences for transaction signing. This
+   will be implemented for all common Cosmos SDK account types in the 0.25 series.
 
 ## Get in touch
 
-The UptickJS development team is happy to get in touch with you for all questions
-and suggestions.
+The UptickJS development team is happy to get in touch with you for all questions and suggestions.
 
-- [GitHub issues](https://github.com/cosmos/cosmjs/issues) for bugs and feature
-  requests
-  
+- [GitHub issues](https://github.com/cosmos/cosmjs/issues) for bugs and feature requests
+
 - The #cosmjs channel on the
-  ["Cosmos Community" Discord server](https://discord.gg/vcExX9T) for questions
-  and open discussions
+  ["Cosmos Community" Discord server](https://discord.gg/vcExX9T) for questions and open discussions
   
-- [#UptickJS on Twitter](https://twitter.com/search?q=%23CosmJS) to spread the
-  word
+- [#UptickJS on Twitter](https://twitter.com/search?q=%23CosmJS) to spread the word
 
 ## Development
 
