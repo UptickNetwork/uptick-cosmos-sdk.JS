@@ -13,14 +13,11 @@ over browser extensions to server-side clients like faucets/scrapers in the Upti
 ## Documentation
 
 [Here is a list of examples][guided tour] using the Stargate package for use with [Cosmos SDK 0.46] applications . Take
-a look at the wiki page,
-["What can UptickJS do for me?"](https://github.com/cosmos/cosmjs/wiki/What-can-UptickJS-do-for-me%3F)
-and various tests
-([ex](https://github.com/cosmos/cosmjs/blob/main/packages/stargate/src/signingstargateclient.spec.ts))
+a look at the wiki page,["What can UptickJS do for me?"](https://github.com/cosmos/cosmjs/wiki/What-can-UptickJS-do-for-me%3F)
+and various tests ([ex](https://github.com/cosmos/cosmjs/blob/main/packages/stargate/src/signingstargateclient.spec.ts))
 for more example usage of the packages.
 
-[guided tour]:
-https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9
+[guided tour]: https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9
 
 [cosmos sdk 0.41]: https://github.com/cosmos/cosmos-sdk/tree/v0.41.0
 
@@ -127,6 +124,7 @@ The UptickJS development team is happy to get in touch with you for all question
 - [GitHub issues](https://github.com/cosmos/cosmjs/issues) for bugs and feature requests
 
 - The #cosmjs channel on the
+  
   ["Cosmos Community" Discord server](https://discord.gg/vcExX9T) for questions and open discussions
   
 - [#UptickJS on Twitter](https://twitter.com/search?q=%23CosmJS) to spread the word
