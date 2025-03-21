@@ -129,6 +129,7 @@ The UptickJS development team is happy to get in touch with you for all question
   
 - [#UptickJS on Twitter](https://twitter.com/search?q=%23CosmJS) to spread the word
 
+
 ## Development
 
 See [HACKING.md](HACKING.md).
