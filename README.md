@@ -133,5 +133,3 @@ The UptickJS development team is happy to get in touch with you for all question
 ## Development
 
 See [HACKING.md](HACKING.md).
-
-
