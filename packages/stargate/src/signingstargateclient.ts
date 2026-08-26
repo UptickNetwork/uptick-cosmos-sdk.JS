@@ -83,8 +83,7 @@ import {
 //const nft_tx_pb = require( '../../proto-types/uptick/collection/v1/tx_pb');
 const nft_tx_pb = require("@uptickjs/proto-types/src/uptick/collection/v1/tx_pb");
 
-//xxl ## add erc20 convert msg 0622
-const erc20_tx_pb = require("@uptickjs/proto-types/src/uptick/erc20/v1/tx_pb");
+//xxl ## erc20 module removed in chain upgrade (no longer exists on-chain)
 
 //xxl 02 local
 // const erc721_tx_pb = require("../../proto-types/src/uptick/erc721/v1/tx_pb")

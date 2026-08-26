@@ -11,19 +11,14 @@
 /* eslint-disable */
 // @ts-nocheck
 
-const { types } = require('@irisnet/irishub-sdk');
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() {
-  if (this) { return this; }
-  if (typeof window !== 'undefined') { return window; }
-  if (typeof global !== 'undefined') { return global; }
-  if (typeof self !== 'undefined') { return self; }
-  return Function('return this')();
-}.call(null));
+var global = Function('return this')();
 
+var cosmos_msg_v1_msg_pb = require('../../../cosmos/msg/v1/msg_pb.js');
+goog.object.extend(proto, cosmos_msg_v1_msg_pb);
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-
+goog.object.extend(proto, gogoproto_gogo_pb);
 goog.exportSymbol('proto.uptick.collection.v1.MsgBurnNFT', null, global);
 goog.exportSymbol('proto.uptick.collection.v1.MsgBurnNFTResponse', null, global);
 goog.exportSymbol('proto.uptick.collection.v1.MsgEditNFT', null, global);
@@ -49,7 +44,6 @@ goog.exportSymbol('proto.uptick.collection.v1.MsgTransferNFTResponse', null, glo
 proto.uptick.collection.v1.MsgIssueDenom = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-
 goog.inherits(proto.uptick.collection.v1.MsgIssueDenom, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
@@ -327,7 +321,11 @@ proto.uptick.collection.v1.MsgIssueDenom.toObject = function(includeInstance, ms
     sender: jspb.Message.getFieldWithDefault(msg, 4, ""),
     symbol: jspb.Message.getFieldWithDefault(msg, 5, ""),
     mintRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
-    updateRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
+    updateRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+    description: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    uri: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    uriHash: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    data: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
 
   if (includeInstance) {
@@ -392,6 +390,22 @@ proto.uptick.collection.v1.MsgIssueDenom.deserializeBinaryFromReader = function(
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setUpdateRestricted(value);
       break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUri(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUriHash(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setData(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -406,29 +420,11 @@ proto.uptick.collection.v1.MsgIssueDenom.deserializeBinaryFromReader = function(
  * @return {!Uint8Array}
  */
 proto.uptick.collection.v1.MsgIssueDenom.prototype.serializeBinary = function() {
-
   var writer = new jspb.BinaryWriter();
   proto.uptick.collection.v1.MsgIssueDenom.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.uptick.collection.v1.MsgIssueDenom.encode = function(type,value){
-
-  //type(value);
-  // let msg = jspb.Message.initialize(this, value, 0, -1, null, null);
-  let msg = new type(value);
-  console.log(msg);
-  
-  var writer = new jspb.BinaryWriter();
-
-  proto.uptick.collection.v1.MsgIssueDenom.serializeBinaryToWriter(msg, writer);
-  return writer.getResultBuffer();
-
-};
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -485,6 +481,34 @@ proto.uptick.collection.v1.MsgIssueDenom.serializeBinaryToWriter = function(mess
   if (f) {
     writer.writeBool(
       7,
+      f
+    );
+  }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getUri();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = message.getUriHash();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getData();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
       f
     );
   }
@@ -614,6 +638,78 @@ proto.uptick.collection.v1.MsgIssueDenom.prototype.getUpdateRestricted = functio
  */
 proto.uptick.collection.v1.MsgIssueDenom.prototype.setUpdateRestricted = function(value) {
   return jspb.Message.setProto3BooleanField(this, 7, value);
+};
+
+
+/**
+ * optional string description = 8;
+ * @return {string}
+ */
+proto.uptick.collection.v1.MsgIssueDenom.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.MsgIssueDenom} returns this
+ */
+proto.uptick.collection.v1.MsgIssueDenom.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string uri = 9;
+ * @return {string}
+ */
+proto.uptick.collection.v1.MsgIssueDenom.prototype.getUri = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.MsgIssueDenom} returns this
+ */
+proto.uptick.collection.v1.MsgIssueDenom.prototype.setUri = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string uri_hash = 10;
+ * @return {string}
+ */
+proto.uptick.collection.v1.MsgIssueDenom.prototype.getUriHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.MsgIssueDenom} returns this
+ */
+proto.uptick.collection.v1.MsgIssueDenom.prototype.setUriHash = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional string data = 11;
+ * @return {string}
+ */
+proto.uptick.collection.v1.MsgIssueDenom.prototype.getData = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.MsgIssueDenom} returns this
+ */
+proto.uptick.collection.v1.MsgIssueDenom.prototype.setData = function(value) {
+  return jspb.Message.setProto3StringField(this, 11, value);
 };
 
 
@@ -756,7 +852,8 @@ proto.uptick.collection.v1.MsgTransferNFT.toObject = function(includeInstance, m
     uri: jspb.Message.getFieldWithDefault(msg, 4, ""),
     data: jspb.Message.getFieldWithDefault(msg, 5, ""),
     sender: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    recipient: jspb.Message.getFieldWithDefault(msg, 7, "")
+    recipient: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    uriHash: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -820,6 +917,10 @@ proto.uptick.collection.v1.MsgTransferNFT.deserializeBinaryFromReader = function
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setRecipient(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUriHash(value);
       break;
     default:
       reader.skipField();
@@ -896,6 +997,13 @@ proto.uptick.collection.v1.MsgTransferNFT.serializeBinaryToWriter = function(mes
   if (f.length > 0) {
     writer.writeString(
       7,
+      f
+    );
+  }
+  f = message.getUriHash();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -1025,6 +1133,24 @@ proto.uptick.collection.v1.MsgTransferNFT.prototype.getRecipient = function() {
  */
 proto.uptick.collection.v1.MsgTransferNFT.prototype.setRecipient = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string uri_hash = 8;
+ * @return {string}
+ */
+proto.uptick.collection.v1.MsgTransferNFT.prototype.getUriHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.MsgTransferNFT} returns this
+ */
+proto.uptick.collection.v1.MsgTransferNFT.prototype.setUriHash = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -1166,7 +1292,8 @@ proto.uptick.collection.v1.MsgEditNFT.toObject = function(includeInstance, msg) 
     name: jspb.Message.getFieldWithDefault(msg, 3, ""),
     uri: jspb.Message.getFieldWithDefault(msg, 4, ""),
     data: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    sender: jspb.Message.getFieldWithDefault(msg, 6, "")
+    sender: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    uriHash: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -1226,6 +1353,10 @@ proto.uptick.collection.v1.MsgEditNFT.deserializeBinaryFromReader = function(msg
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setSender(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUriHash(value);
       break;
     default:
       reader.skipField();
@@ -1295,6 +1426,13 @@ proto.uptick.collection.v1.MsgEditNFT.serializeBinaryToWriter = function(message
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getUriHash();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -1406,6 +1544,24 @@ proto.uptick.collection.v1.MsgEditNFT.prototype.getSender = function() {
  */
 proto.uptick.collection.v1.MsgEditNFT.prototype.setSender = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string uri_hash = 7;
+ * @return {string}
+ */
+proto.uptick.collection.v1.MsgEditNFT.prototype.getUriHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.MsgEditNFT} returns this
+ */
+proto.uptick.collection.v1.MsgEditNFT.prototype.setUriHash = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -1548,7 +1704,8 @@ proto.uptick.collection.v1.MsgMintNFT.toObject = function(includeInstance, msg) 
     uri: jspb.Message.getFieldWithDefault(msg, 4, ""),
     data: jspb.Message.getFieldWithDefault(msg, 5, ""),
     sender: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    recipient: jspb.Message.getFieldWithDefault(msg, 7, "")
+    recipient: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    uriHash: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -1612,6 +1769,10 @@ proto.uptick.collection.v1.MsgMintNFT.deserializeBinaryFromReader = function(msg
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setRecipient(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUriHash(value);
       break;
     default:
       reader.skipField();
@@ -1688,6 +1849,13 @@ proto.uptick.collection.v1.MsgMintNFT.serializeBinaryToWriter = function(message
   if (f.length > 0) {
     writer.writeString(
       7,
+      f
+    );
+  }
+  f = message.getUriHash();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -1817,6 +1985,24 @@ proto.uptick.collection.v1.MsgMintNFT.prototype.getRecipient = function() {
  */
 proto.uptick.collection.v1.MsgMintNFT.prototype.setRecipient = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string uri_hash = 8;
+ * @return {string}
+ */
+proto.uptick.collection.v1.MsgMintNFT.prototype.getUriHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.MsgMintNFT} returns this
+ */
+proto.uptick.collection.v1.MsgMintNFT.prototype.setUriHash = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 

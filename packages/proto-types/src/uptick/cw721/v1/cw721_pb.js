@@ -13,12 +13,10 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global = Function('return this')();
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-
-var cosmos_nft_v1beta1_nft_pb = require('../../../cosmos/nft/v1beta1/nft_pb.js');
-
+goog.object.extend(proto, gogoproto_gogo_pb);
 goog.exportSymbol('proto.uptick.cw721.v1.Owner', null, global);
 goog.exportSymbol('proto.uptick.cw721.v1.TokenPair', null, global);
 goog.exportSymbol('proto.uptick.cw721.v1.UIDPair', null, global);

@@ -13,14 +13,16 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global = Function('return this')();
 
-var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
-
+var cosmos_msg_v1_msg_pb = require('../../../cosmos/msg/v1/msg_pb.js');
+goog.object.extend(proto, cosmos_msg_v1_msg_pb);
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-
+goog.object.extend(proto, gogoproto_gogo_pb);
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
+goog.object.extend(proto, google_api_annotations_pb);
 var ibc_core_client_v1_client_pb = require('../../../ibc/core/client/v1/client_pb.js');
-
+goog.object.extend(proto, ibc_core_client_v1_client_pb);
 goog.exportSymbol('proto.uptick.cw721.v1.MsgConvertC721Response', null, global);
 goog.exportSymbol('proto.uptick.cw721.v1.MsgConvertCW721', null, global);
 goog.exportSymbol('proto.uptick.cw721.v1.MsgConvertCW721Response', null, global);
@@ -39,7 +41,7 @@ goog.exportSymbol('proto.uptick.cw721.v1.MsgTransferCW721Response', null, global
  * @constructor
  */
 proto.uptick.cw721.v1.MsgConvertNFT = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.uptick.cw721.v1.MsgConvertNFT.repeatedFields_, null);
 };
 goog.inherits(proto.uptick.cw721.v1.MsgConvertNFT, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -81,7 +83,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.uptick.cw721.v1.MsgConvertCW721 = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.uptick.cw721.v1.MsgConvertCW721.repeatedFields_, null);
 };
 goog.inherits(proto.uptick.cw721.v1.MsgConvertCW721, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -102,7 +104,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.uptick.cw721.v1.MsgConvertCW721Response = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.uptick.cw721.v1.MsgConvertCW721Response.repeatedFields_, null);
 };
 goog.inherits(proto.uptick.cw721.v1.MsgConvertCW721Response, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -144,7 +146,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.uptick.cw721.v1.MsgTransferCW721 = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.uptick.cw721.v1.MsgTransferCW721.repeatedFields_, null);
 };
 goog.inherits(proto.uptick.cw721.v1.MsgTransferCW721, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -175,6 +177,13 @@ if (goog.DEBUG && !COMPILED) {
    */
   proto.uptick.cw721.v1.MsgTransferCW721Response.displayName = 'proto.uptick.cw721.v1.MsgTransferCW721Response';
 }
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.uptick.cw721.v1.MsgConvertNFT.repeatedFields_ = [2,6];
 
 
 
@@ -208,11 +217,11 @@ proto.uptick.cw721.v1.MsgConvertNFT.prototype.toObject = function(opt_includeIns
 proto.uptick.cw721.v1.MsgConvertNFT.toObject = function(includeInstance, msg) {
   var f, obj = {
     classId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    nftIds: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    nftIdsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
     receiver: jspb.Message.getFieldWithDefault(msg, 3, ""),
     sender: jspb.Message.getFieldWithDefault(msg, 4, ""),
     contractAddress: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    tokenIds: jspb.Message.getFieldWithDefault(msg, 6, "")
+    tokenIdsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -255,7 +264,7 @@ proto.uptick.cw721.v1.MsgConvertNFT.deserializeBinaryFromReader = function(msg, 
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setNftIds(value);
+      msg.addNftIds(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -271,7 +280,7 @@ proto.uptick.cw721.v1.MsgConvertNFT.deserializeBinaryFromReader = function(msg, 
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTokenIds(value);
+      msg.addTokenIds(value);
       break;
     default:
       reader.skipField();
@@ -309,9 +318,9 @@ proto.uptick.cw721.v1.MsgConvertNFT.serializeBinaryToWriter = function(message, 
       f
     );
   }
-  f = message.getNftIds();
+  f = message.getNftIdsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       2,
       f
     );
@@ -337,9 +346,9 @@ proto.uptick.cw721.v1.MsgConvertNFT.serializeBinaryToWriter = function(message, 
       f
     );
   }
-  f = message.getTokenIds();
+  f = message.getTokenIdsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       6,
       f
     );
@@ -366,20 +375,39 @@ proto.uptick.cw721.v1.MsgConvertNFT.prototype.setClassId = function(value) {
 
 
 /**
- * optional string nft_ids = 2;
- * @return {string}
+ * repeated string nft_ids = 2;
+ * @return {!Array<string>}
  */
-proto.uptick.cw721.v1.MsgConvertNFT.prototype.getNftIds = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.uptick.cw721.v1.MsgConvertNFT.prototype.getNftIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertNFT} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertNFT.prototype.setNftIdsList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
 };
 
 
 /**
  * @param {string} value
+ * @param {number=} opt_index
  * @return {!proto.uptick.cw721.v1.MsgConvertNFT} returns this
  */
-proto.uptick.cw721.v1.MsgConvertNFT.prototype.setNftIds = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.uptick.cw721.v1.MsgConvertNFT.prototype.addNftIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.uptick.cw721.v1.MsgConvertNFT} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertNFT.prototype.clearNftIdsList = function() {
+  return this.setNftIdsList([]);
 };
 
 
@@ -438,20 +466,39 @@ proto.uptick.cw721.v1.MsgConvertNFT.prototype.setContractAddress = function(valu
 
 
 /**
- * optional string token_ids = 6;
- * @return {string}
+ * repeated string token_ids = 6;
+ * @return {!Array<string>}
  */
-proto.uptick.cw721.v1.MsgConvertNFT.prototype.getTokenIds = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+proto.uptick.cw721.v1.MsgConvertNFT.prototype.getTokenIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertNFT} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertNFT.prototype.setTokenIdsList = function(value) {
+  return jspb.Message.setField(this, 6, value || []);
 };
 
 
 /**
  * @param {string} value
+ * @param {number=} opt_index
  * @return {!proto.uptick.cw721.v1.MsgConvertNFT} returns this
  */
-proto.uptick.cw721.v1.MsgConvertNFT.prototype.setTokenIds = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+proto.uptick.cw721.v1.MsgConvertNFT.prototype.addTokenIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 6, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.uptick.cw721.v1.MsgConvertNFT} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertNFT.prototype.clearTokenIdsList = function() {
+  return this.setTokenIdsList([]);
 };
 
 
@@ -557,6 +604,13 @@ proto.uptick.cw721.v1.MsgConvertNFTResponse.serializeBinaryToWriter = function(m
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.uptick.cw721.v1.MsgConvertCW721.repeatedFields_ = [2,6];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -589,11 +643,11 @@ proto.uptick.cw721.v1.MsgConvertCW721.prototype.toObject = function(opt_includeI
 proto.uptick.cw721.v1.MsgConvertCW721.toObject = function(includeInstance, msg) {
   var f, obj = {
     contractAddress: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    tokenIds: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    tokenIdsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
     receiver: jspb.Message.getFieldWithDefault(msg, 3, ""),
     sender: jspb.Message.getFieldWithDefault(msg, 4, ""),
     classId: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    nftIds: jspb.Message.getFieldWithDefault(msg, 6, "")
+    nftIdsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -636,7 +690,7 @@ proto.uptick.cw721.v1.MsgConvertCW721.deserializeBinaryFromReader = function(msg
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTokenIds(value);
+      msg.addTokenIds(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -652,7 +706,7 @@ proto.uptick.cw721.v1.MsgConvertCW721.deserializeBinaryFromReader = function(msg
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setNftIds(value);
+      msg.addNftIds(value);
       break;
     default:
       reader.skipField();
@@ -690,9 +744,9 @@ proto.uptick.cw721.v1.MsgConvertCW721.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = message.getTokenIds();
+  f = message.getTokenIdsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       2,
       f
     );
@@ -718,9 +772,9 @@ proto.uptick.cw721.v1.MsgConvertCW721.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = message.getNftIds();
+  f = message.getNftIdsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       6,
       f
     );
@@ -747,20 +801,39 @@ proto.uptick.cw721.v1.MsgConvertCW721.prototype.setContractAddress = function(va
 
 
 /**
- * optional string token_ids = 2;
- * @return {string}
+ * repeated string token_ids = 2;
+ * @return {!Array<string>}
  */
-proto.uptick.cw721.v1.MsgConvertCW721.prototype.getTokenIds = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.uptick.cw721.v1.MsgConvertCW721.prototype.getTokenIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721.prototype.setTokenIdsList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
 };
 
 
 /**
  * @param {string} value
+ * @param {number=} opt_index
  * @return {!proto.uptick.cw721.v1.MsgConvertCW721} returns this
  */
-proto.uptick.cw721.v1.MsgConvertCW721.prototype.setTokenIds = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.uptick.cw721.v1.MsgConvertCW721.prototype.addTokenIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721.prototype.clearTokenIdsList = function() {
+  return this.setTokenIdsList([]);
 };
 
 
@@ -819,23 +892,49 @@ proto.uptick.cw721.v1.MsgConvertCW721.prototype.setClassId = function(value) {
 
 
 /**
- * optional string nft_ids = 6;
- * @return {string}
+ * repeated string nft_ids = 6;
+ * @return {!Array<string>}
  */
-proto.uptick.cw721.v1.MsgConvertCW721.prototype.getNftIds = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+proto.uptick.cw721.v1.MsgConvertCW721.prototype.getNftIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721.prototype.setNftIdsList = function(value) {
+  return jspb.Message.setField(this, 6, value || []);
 };
 
 
 /**
  * @param {string} value
+ * @param {number=} opt_index
  * @return {!proto.uptick.cw721.v1.MsgConvertCW721} returns this
  */
-proto.uptick.cw721.v1.MsgConvertCW721.prototype.setNftIds = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+proto.uptick.cw721.v1.MsgConvertCW721.prototype.addNftIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 6, value, opt_index);
 };
 
 
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721.prototype.clearNftIdsList = function() {
+  return this.setNftIdsList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.repeatedFields_ = [2,6];
 
 
 
@@ -868,7 +967,12 @@ proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.toObject = function(opt_
  */
 proto.uptick.cw721.v1.MsgConvertCW721Response.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    contractAddress: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    tokenIdsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+    receiver: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    sender: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    classId: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    nftIdsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -905,6 +1009,30 @@ proto.uptick.cw721.v1.MsgConvertCW721Response.deserializeBinaryFromReader = func
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setContractAddress(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addTokenIds(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setReceiver(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSender(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setClassId(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addNftIds(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -934,6 +1062,194 @@ proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.serializeBinary = functi
  */
 proto.uptick.cw721.v1.MsgConvertCW721Response.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getContractAddress();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getTokenIdsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
+    );
+  }
+  f = message.getReceiver();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getSender();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getClassId();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getNftIdsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      6,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string contract_address = 1;
+ * @return {string}
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.getContractAddress = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.setContractAddress = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated string token_ids = 2;
+ * @return {!Array<string>}
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.getTokenIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.setTokenIdsList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.addTokenIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.clearTokenIdsList = function() {
+  return this.setTokenIdsList([]);
+};
+
+
+/**
+ * optional string receiver = 3;
+ * @return {string}
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.getReceiver = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.setReceiver = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string sender = 4;
+ * @return {string}
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.getSender = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.setSender = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string class_id = 5;
+ * @return {string}
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.getClassId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.setClassId = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * repeated string nft_ids = 6;
+ * @return {!Array<string>}
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.getNftIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.setNftIdsList = function(value) {
+  return jspb.Message.setField(this, 6, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.addNftIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 6, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.uptick.cw721.v1.MsgConvertCW721Response} returns this
+ */
+proto.uptick.cw721.v1.MsgConvertCW721Response.prototype.clearNftIdsList = function() {
+  return this.setNftIdsList([]);
 };
 
 
@@ -1039,6 +1355,13 @@ proto.uptick.cw721.v1.MsgConvertC721Response.serializeBinaryToWriter = function(
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.uptick.cw721.v1.MsgTransferCW721.repeatedFields_ = [2,6];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1071,14 +1394,14 @@ proto.uptick.cw721.v1.MsgTransferCW721.prototype.toObject = function(opt_include
 proto.uptick.cw721.v1.MsgTransferCW721.toObject = function(includeInstance, msg) {
   var f, obj = {
     cwContractAddress: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    cwTokenIds: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    cwTokenIdsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
     sourcePort: jspb.Message.getFieldWithDefault(msg, 3, ""),
     sourceChannel: jspb.Message.getFieldWithDefault(msg, 4, ""),
     classId: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    cosmosTokenIds: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    cosmosTokenIdsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
     cwSender: jspb.Message.getFieldWithDefault(msg, 7, ""),
     cosmosReceiver: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    timeoutHeight: jspb.Message.getFieldWithDefault(msg, 9, 0),
+    timeoutHeight: (f = msg.getTimeoutHeight()) && ibc_core_client_v1_client_pb.Height.toObject(includeInstance, f),
     timeoutTimestamp: jspb.Message.getFieldWithDefault(msg, 10, 0),
     memo: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
@@ -1123,7 +1446,7 @@ proto.uptick.cw721.v1.MsgTransferCW721.deserializeBinaryFromReader = function(ms
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCwTokenIds(value);
+      msg.addCwTokenIds(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -1139,7 +1462,7 @@ proto.uptick.cw721.v1.MsgTransferCW721.deserializeBinaryFromReader = function(ms
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCosmosTokenIds(value);
+      msg.addCosmosTokenIds(value);
       break;
     case 7:
       var value = /** @type {string} */ (reader.readString());
@@ -1150,7 +1473,8 @@ proto.uptick.cw721.v1.MsgTransferCW721.deserializeBinaryFromReader = function(ms
       msg.setCosmosReceiver(value);
       break;
     case 9:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = new ibc_core_client_v1_client_pb.Height;
+      reader.readMessage(value,ibc_core_client_v1_client_pb.Height.deserializeBinaryFromReader);
       msg.setTimeoutHeight(value);
       break;
     case 10:
@@ -1197,9 +1521,9 @@ proto.uptick.cw721.v1.MsgTransferCW721.serializeBinaryToWriter = function(messag
       f
     );
   }
-  f = message.getCwTokenIds();
+  f = message.getCwTokenIdsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       2,
       f
     );
@@ -1225,9 +1549,9 @@ proto.uptick.cw721.v1.MsgTransferCW721.serializeBinaryToWriter = function(messag
       f
     );
   }
-  f = message.getCosmosTokenIds();
+  f = message.getCosmosTokenIdsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       6,
       f
     );
@@ -1247,10 +1571,11 @@ proto.uptick.cw721.v1.MsgTransferCW721.serializeBinaryToWriter = function(messag
     );
   }
   f = message.getTimeoutHeight();
-  if (f !== 0) {
-    writer.writeUint64(
+  if (f != null) {
+    writer.writeMessage(
       9,
-      f
+      f,
+      ibc_core_client_v1_client_pb.Height.serializeBinaryToWriter
     );
   }
   f = message.getTimeoutTimestamp();
@@ -1289,20 +1614,39 @@ proto.uptick.cw721.v1.MsgTransferCW721.prototype.setCwContractAddress = function
 
 
 /**
- * optional string cw_token_ids = 2;
- * @return {string}
+ * repeated string cw_token_ids = 2;
+ * @return {!Array<string>}
  */
-proto.uptick.cw721.v1.MsgTransferCW721.prototype.getCwTokenIds = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.getCwTokenIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.uptick.cw721.v1.MsgTransferCW721} returns this
+ */
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.setCwTokenIdsList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
 };
 
 
 /**
  * @param {string} value
+ * @param {number=} opt_index
  * @return {!proto.uptick.cw721.v1.MsgTransferCW721} returns this
  */
-proto.uptick.cw721.v1.MsgTransferCW721.prototype.setCwTokenIds = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.addCwTokenIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.uptick.cw721.v1.MsgTransferCW721} returns this
+ */
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.clearCwTokenIdsList = function() {
+  return this.setCwTokenIdsList([]);
 };
 
 
@@ -1361,20 +1705,39 @@ proto.uptick.cw721.v1.MsgTransferCW721.prototype.setClassId = function(value) {
 
 
 /**
- * optional string cosmos_token_ids = 6;
- * @return {string}
+ * repeated string cosmos_token_ids = 6;
+ * @return {!Array<string>}
  */
-proto.uptick.cw721.v1.MsgTransferCW721.prototype.getCosmosTokenIds = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.getCosmosTokenIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.uptick.cw721.v1.MsgTransferCW721} returns this
+ */
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.setCosmosTokenIdsList = function(value) {
+  return jspb.Message.setField(this, 6, value || []);
 };
 
 
 /**
  * @param {string} value
+ * @param {number=} opt_index
  * @return {!proto.uptick.cw721.v1.MsgTransferCW721} returns this
  */
-proto.uptick.cw721.v1.MsgTransferCW721.prototype.setCosmosTokenIds = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.addCosmosTokenIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 6, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.uptick.cw721.v1.MsgTransferCW721} returns this
+ */
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.clearCosmosTokenIdsList = function() {
+  return this.setCosmosTokenIdsList([]);
 };
 
 
@@ -1415,20 +1778,39 @@ proto.uptick.cw721.v1.MsgTransferCW721.prototype.setCosmosReceiver = function(va
 
 
 /**
- * optional uint64 timeout_height = 9;
- * @return {number}
+ * optional ibc.core.client.v1.Height timeout_height = 9;
+ * @return {?proto.ibc.core.client.v1.Height}
  */
 proto.uptick.cw721.v1.MsgTransferCW721.prototype.getTimeoutHeight = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+  return /** @type{?proto.ibc.core.client.v1.Height} */ (
+    jspb.Message.getWrapperField(this, ibc_core_client_v1_client_pb.Height, 9));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.ibc.core.client.v1.Height|undefined} value
+ * @return {!proto.uptick.cw721.v1.MsgTransferCW721} returns this
+*/
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.setTimeoutHeight = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.uptick.cw721.v1.MsgTransferCW721} returns this
  */
-proto.uptick.cw721.v1.MsgTransferCW721.prototype.setTimeoutHeight = function(value) {
-  return jspb.Message.setProto3IntField(this, 9, value);
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.clearTimeoutHeight = function() {
+  return this.setTimeoutHeight(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.uptick.cw721.v1.MsgTransferCW721.prototype.hasTimeoutHeight = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 

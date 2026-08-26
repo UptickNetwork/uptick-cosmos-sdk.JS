@@ -13,16 +13,10 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() {
-  if (this) { return this; }
-  if (typeof window !== 'undefined') { return window; }
-  if (typeof global !== 'undefined') { return global; }
-  if (typeof self !== 'undefined') { return self; }
-  return Function('return this')();
-}.call(null));
+var global = Function('return this')();
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-
+goog.object.extend(proto, gogoproto_gogo_pb);
 goog.exportSymbol('proto.uptick.collection.v1.BaseNFT', null, global);
 goog.exportSymbol('proto.uptick.collection.v1.Collection', null, global);
 goog.exportSymbol('proto.uptick.collection.v1.Denom', null, global);
@@ -213,7 +207,8 @@ proto.uptick.collection.v1.BaseNFT.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     uri: jspb.Message.getFieldWithDefault(msg, 3, ""),
     data: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    owner: jspb.Message.getFieldWithDefault(msg, 5, "")
+    owner: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    uriHash: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -269,6 +264,10 @@ proto.uptick.collection.v1.BaseNFT.deserializeBinaryFromReader = function(msg, r
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setOwner(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUriHash(value);
       break;
     default:
       reader.skipField();
@@ -331,6 +330,13 @@ proto.uptick.collection.v1.BaseNFT.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getUriHash();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -427,6 +433,24 @@ proto.uptick.collection.v1.BaseNFT.prototype.setOwner = function(value) {
 };
 
 
+/**
+ * optional string uri_hash = 6;
+ * @return {string}
+ */
+proto.uptick.collection.v1.BaseNFT.prototype.getUriHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.BaseNFT} returns this
+ */
+proto.uptick.collection.v1.BaseNFT.prototype.setUriHash = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
 
 
 
@@ -460,7 +484,7 @@ proto.uptick.collection.v1.NFTMetadata.prototype.toObject = function(opt_include
 proto.uptick.collection.v1.NFTMetadata.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 2, "")
+    data: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -503,7 +527,7 @@ proto.uptick.collection.v1.NFTMetadata.deserializeBinaryFromReader = function(ms
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setDescription(value);
+      msg.setData(value);
       break;
     default:
       reader.skipField();
@@ -541,7 +565,7 @@ proto.uptick.collection.v1.NFTMetadata.serializeBinaryToWriter = function(messag
       f
     );
   }
-  f = message.getDescription();
+  f = message.getData();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -570,10 +594,10 @@ proto.uptick.collection.v1.NFTMetadata.prototype.setName = function(value) {
 
 
 /**
- * optional string description = 2;
+ * optional string data = 2;
  * @return {string}
  */
-proto.uptick.collection.v1.NFTMetadata.prototype.getDescription = function() {
+proto.uptick.collection.v1.NFTMetadata.prototype.getData = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -582,7 +606,7 @@ proto.uptick.collection.v1.NFTMetadata.prototype.getDescription = function() {
  * @param {string} value
  * @return {!proto.uptick.collection.v1.NFTMetadata} returns this
  */
-proto.uptick.collection.v1.NFTMetadata.prototype.setDescription = function(value) {
+proto.uptick.collection.v1.NFTMetadata.prototype.setData = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -625,7 +649,11 @@ proto.uptick.collection.v1.Denom.toObject = function(includeInstance, msg) {
     creator: jspb.Message.getFieldWithDefault(msg, 4, ""),
     symbol: jspb.Message.getFieldWithDefault(msg, 5, ""),
     mintRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
-    updateRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
+    updateRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+    description: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    uri: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    uriHash: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    data: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
 
   if (includeInstance) {
@@ -689,6 +717,22 @@ proto.uptick.collection.v1.Denom.deserializeBinaryFromReader = function(msg, rea
     case 7:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setUpdateRestricted(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUri(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUriHash(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setData(value);
       break;
     default:
       reader.skipField();
@@ -765,6 +809,34 @@ proto.uptick.collection.v1.Denom.serializeBinaryToWriter = function(message, wri
   if (f) {
     writer.writeBool(
       7,
+      f
+    );
+  }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getUri();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = message.getUriHash();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getData();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
       f
     );
   }
@@ -897,6 +969,78 @@ proto.uptick.collection.v1.Denom.prototype.setUpdateRestricted = function(value)
 };
 
 
+/**
+ * optional string description = 8;
+ * @return {string}
+ */
+proto.uptick.collection.v1.Denom.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.Denom} returns this
+ */
+proto.uptick.collection.v1.Denom.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string uri = 9;
+ * @return {string}
+ */
+proto.uptick.collection.v1.Denom.prototype.getUri = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.Denom} returns this
+ */
+proto.uptick.collection.v1.Denom.prototype.setUri = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string uri_hash = 10;
+ * @return {string}
+ */
+proto.uptick.collection.v1.Denom.prototype.getUriHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.Denom} returns this
+ */
+proto.uptick.collection.v1.Denom.prototype.setUriHash = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional string data = 11;
+ * @return {string}
+ */
+proto.uptick.collection.v1.Denom.prototype.getData = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.Denom} returns this
+ */
+proto.uptick.collection.v1.Denom.prototype.setData = function(value) {
+  return jspb.Message.setProto3StringField(this, 11, value);
+};
+
+
 
 
 
@@ -932,7 +1076,8 @@ proto.uptick.collection.v1.DenomMetadata.toObject = function(includeInstance, ms
     creator: jspb.Message.getFieldWithDefault(msg, 1, ""),
     schema: jspb.Message.getFieldWithDefault(msg, 2, ""),
     mintRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    updateRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+    updateRestricted: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+    data: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -984,6 +1129,10 @@ proto.uptick.collection.v1.DenomMetadata.deserializeBinaryFromReader = function(
     case 4:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setUpdateRestricted(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setData(value);
       break;
     default:
       reader.skipField();
@@ -1039,6 +1188,13 @@ proto.uptick.collection.v1.DenomMetadata.serializeBinaryToWriter = function(mess
   if (f) {
     writer.writeBool(
       4,
+      f
+    );
+  }
+  f = message.getData();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -1114,6 +1270,24 @@ proto.uptick.collection.v1.DenomMetadata.prototype.getUpdateRestricted = functio
  */
 proto.uptick.collection.v1.DenomMetadata.prototype.setUpdateRestricted = function(value) {
   return jspb.Message.setProto3BooleanField(this, 4, value);
+};
+
+
+/**
+ * optional string data = 5;
+ * @return {string}
+ */
+proto.uptick.collection.v1.DenomMetadata.prototype.getData = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.uptick.collection.v1.DenomMetadata} returns this
+ */
+proto.uptick.collection.v1.DenomMetadata.prototype.setData = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
