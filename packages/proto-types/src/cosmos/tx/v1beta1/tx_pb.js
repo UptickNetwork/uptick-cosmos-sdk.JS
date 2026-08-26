@@ -24,11 +24,11 @@ var global = (function() {
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 
 var cosmos_crypto_multisig_v1beta1_multisig_pb = require('../../../cosmos/crypto/multisig/v1beta1/multisig_pb.js');
-goog.object.extend(proto, cosmos_crypto_multisig_v1beta1_multisig_pb);
+// goog.object.extend(proto, cosmos_crypto_multisig_v1beta1_multisig_pb);
 var cosmos_base_v1beta1_coin_pb = require('../../../cosmos/base/v1beta1/coin_pb.js');
-goog.object.extend(proto, cosmos_base_v1beta1_coin_pb);
+// goog.object.extend(proto, cosmos_base_v1beta1_coin_pb);
 var cosmos_tx_signing_v1beta1_signing_pb = require('../../../cosmos/tx/signing/v1beta1/signing_pb.js');
-goog.object.extend(proto, cosmos_tx_signing_v1beta1_signing_pb);
+// goog.object.extend(proto, cosmos_tx_signing_v1beta1_signing_pb);
 var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
 
 var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');

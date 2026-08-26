@@ -16,7 +16,7 @@ var goog = jspb;
 var global = Function('return this')();
 
 var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
-goog.object.extend(proto, google_protobuf_any_pb);
+// goog.object.extend(proto, google_protobuf_any_pb);
 goog.exportSymbol('proto.uptick.nft.v1beta1.Class', null, global);
 goog.exportSymbol('proto.uptick.nft.v1beta1.NFT', null, global);
 /**

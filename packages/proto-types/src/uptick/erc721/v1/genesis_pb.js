@@ -16,9 +16,9 @@ var goog = jspb;
 var global = Function('return this')();
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
+// goog.object.extend(proto, gogoproto_gogo_pb);
 var uptick_erc721_v1_erc721_pb = require('../../../uptick/erc721/v1/erc721_pb.js');
-goog.object.extend(proto, uptick_erc721_v1_erc721_pb);
+// goog.object.extend(proto, uptick_erc721_v1_erc721_pb);
 goog.exportSymbol('proto.uptick.erc721.v1.GenesisState', null, global);
 goog.exportSymbol('proto.uptick.erc721.v1.Params', null, global);
 /**

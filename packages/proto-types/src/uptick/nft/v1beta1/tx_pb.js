@@ -16,7 +16,7 @@ var goog = jspb;
 var global = Function('return this')();
 
 var cosmos_msg_v1_msg_pb = require('../../../cosmos/msg/v1/msg_pb.js');
-goog.object.extend(proto, cosmos_msg_v1_msg_pb);
+// goog.object.extend(proto, cosmos_msg_v1_msg_pb);
 goog.exportSymbol('proto.uptick.nft.v1beta1.MsgSend', null, global);
 goog.exportSymbol('proto.uptick.nft.v1beta1.MsgSendResponse', null, global);
 /**

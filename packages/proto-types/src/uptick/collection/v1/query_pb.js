@@ -16,13 +16,13 @@ var goog = jspb;
 var global = Function('return this')();
 
 var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js');
-goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
+// goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
+// goog.object.extend(proto, gogoproto_gogo_pb);
 var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
-goog.object.extend(proto, google_api_annotations_pb);
+// goog.object.extend(proto, google_api_annotations_pb);
 var uptick_collection_v1_collection_pb = require('../../../uptick/collection/v1/collection_pb.js');
-goog.object.extend(proto, uptick_collection_v1_collection_pb);
+// goog.object.extend(proto, uptick_collection_v1_collection_pb);
 goog.exportSymbol('proto.uptick.collection.v1.QueryCollectionRequest', null, global);
 goog.exportSymbol('proto.uptick.collection.v1.QueryCollectionResponse', null, global);
 goog.exportSymbol('proto.uptick.collection.v1.QueryDenomRequest', null, global);

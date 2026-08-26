@@ -16,7 +16,7 @@ var goog = jspb;
 var global = Function('return this')();
 
 var uptick_nft_v1beta1_nft_pb = require('../../../uptick/nft/v1beta1/nft_pb.js');
-goog.object.extend(proto, uptick_nft_v1beta1_nft_pb);
+// goog.object.extend(proto, uptick_nft_v1beta1_nft_pb);
 goog.exportSymbol('proto.uptick.nft.v1beta1.Entry', null, global);
 goog.exportSymbol('proto.uptick.nft.v1beta1.GenesisState', null, global);
 /**

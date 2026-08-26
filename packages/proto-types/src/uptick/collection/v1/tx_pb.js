@@ -16,9 +16,9 @@ var goog = jspb;
 var global = Function('return this')();
 
 var cosmos_msg_v1_msg_pb = require('../../../cosmos/msg/v1/msg_pb.js');
-goog.object.extend(proto, cosmos_msg_v1_msg_pb);
+// goog.object.extend(proto, cosmos_msg_v1_msg_pb);
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
+// goog.object.extend(proto, gogoproto_gogo_pb);
 goog.exportSymbol('proto.uptick.collection.v1.MsgBurnNFT', null, global);
 goog.exportSymbol('proto.uptick.collection.v1.MsgBurnNFTResponse', null, global);
 goog.exportSymbol('proto.uptick.collection.v1.MsgEditNFT', null, global);

@@ -16,7 +16,7 @@ var goog = jspb;
 var global = Function('return this')();
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
+// goog.object.extend(proto, gogoproto_gogo_pb);
 goog.exportSymbol('proto.uptick.erc721.v1.Owner', null, global);
 goog.exportSymbol('proto.uptick.erc721.v1.TokenPair', null, global);
 goog.exportSymbol('proto.uptick.erc721.v1.UIDPair', null, global);

@@ -24,13 +24,13 @@ var global = (function() {
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 
 var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
-goog.object.extend(proto, google_api_annotations_pb);
+// goog.object.extend(proto, google_api_annotations_pb);
 var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
 
 var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
 
 var ethermint_evm_v1_evm_pb = require('../../../ethermint/evm/v1/evm_pb.js');
-goog.object.extend(proto, ethermint_evm_v1_evm_pb);
+// goog.object.extend(proto, ethermint_evm_v1_evm_pb);
 goog.exportSymbol('proto.ethermint.evm.v1.AccessListTx', null, global);
 goog.exportSymbol('proto.ethermint.evm.v1.DynamicFeeTx', null, global);
 goog.exportSymbol('proto.ethermint.evm.v1.ExtensionOptionsEthereumTx', null, global);

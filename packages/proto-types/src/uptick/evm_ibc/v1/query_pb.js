@@ -16,11 +16,11 @@ var goog = jspb;
 var global = Function('return this')();
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
+// goog.object.extend(proto, gogoproto_gogo_pb);
 var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
-goog.object.extend(proto, google_api_annotations_pb);
+// goog.object.extend(proto, google_api_annotations_pb);
 var uptick_evm_ibc_v1_evm_ibc_pb = require('../../../uptick/evm_ibc/v1/evm_ibc_pb.js');
-goog.object.extend(proto, uptick_evm_ibc_v1_evm_ibc_pb);
+// goog.object.extend(proto, uptick_evm_ibc_v1_evm_ibc_pb);
 goog.exportSymbol('proto.uptick.evm_ibc.v1.QueryEvmAddressRequest', null, global);
 goog.exportSymbol('proto.uptick.evm_ibc.v1.QueryTokenPairResponse', null, global);
 /**

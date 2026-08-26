@@ -16,13 +16,13 @@ var goog = jspb;
 var global = Function('return this')();
 
 var cosmos_msg_v1_msg_pb = require('../../../cosmos/msg/v1/msg_pb.js');
-goog.object.extend(proto, cosmos_msg_v1_msg_pb);
+// goog.object.extend(proto, cosmos_msg_v1_msg_pb);
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
+// goog.object.extend(proto, gogoproto_gogo_pb);
 var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
-goog.object.extend(proto, google_api_annotations_pb);
+// goog.object.extend(proto, google_api_annotations_pb);
 var ibc_core_client_v1_client_pb = require('../../../ibc/core/client/v1/client_pb.js');
-goog.object.extend(proto, ibc_core_client_v1_client_pb);
+// goog.object.extend(proto, ibc_core_client_v1_client_pb);
 goog.exportSymbol('proto.uptick.erc721.v1.MsgConvertERC721', null, global);
 goog.exportSymbol('proto.uptick.erc721.v1.MsgConvertERC721Response', null, global);
 goog.exportSymbol('proto.uptick.erc721.v1.MsgConvertNFT', null, global);

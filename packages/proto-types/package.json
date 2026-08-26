@@ -1,7 +1,7 @@
 {
   "name": "@uptickjs/proto-types",
   "version": "0.27.19",
-  "description": "Utility functions for working with WebSockets",
+  "description": "Generated TypeScript protobuf types for the Uptick chain (Cosmos SDK / IBC / Ethermint / Uptick modules)",
   "contributors": [
     "uptick <starryrepublican@gmail.com>"
   ],
