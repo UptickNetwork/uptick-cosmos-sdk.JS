@@ -554,10 +554,19 @@ export class SigningCosmWasmClient extends CosmWasmClient {
       throw new Error("Failed to retrieve account from signer");
     }
     const pubkey = encodePubkey(encodeSecp256k1Pubkey(accountFromSigner.pubkey));
-    if(accountFromSigner.address.indexOf("uptick") != -1){
-      pubkey.typeUrl = "/ethermint.crypto.v1.ethsecp256k1.PubKey";
-    }
-    else{
+    if (accountFromSigner.address.indexOf("uptick") != -1) {
+      // Uptick v0.4+ (cosmos/evm, e.g. Origin origin_1170-3) registers
+      // /cosmos.evm.crypto.v1.ethsecp256k1.PubKey. The old ethermint
+      // typeUrl unpacks to *legacy.EthSecp256k1PubKey which fails
+      // unknownproto.Descriptor() checks (tx parse error, codespace sdk/2).
+      // Mainnet v0.3.x still uses the ethermint typeUrl.
+      const isCosmosEvm =
+        typeof chainId === "string" &&
+        (chainId.indexOf("origin") !== -1 || chainId.indexOf("1170") !== -1);
+      pubkey.typeUrl = isCosmosEvm
+        ? "/cosmos.evm.crypto.v1.ethsecp256k1.PubKey"
+        : "/ethermint.crypto.v1.ethsecp256k1.PubKey";
+    } else {
       pubkey.typeUrl = "/cosmos.crypto.secp256k1.PubKey";
     }
     

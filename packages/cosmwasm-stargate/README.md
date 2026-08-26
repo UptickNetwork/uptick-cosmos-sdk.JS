@@ -1,30 +1,52 @@
-# @cosmjs/cosmwasm-stargate
+# @uptickjs/cosmwasm-stargate
 
-[![npm version](https://img.shields.io/npm/v/@cosmjs/cosmwasm-stargate.svg)](https://www.npmjs.com/package/@cosmjs/cosmwasm-stargate)
+[![npm version](https://img.shields.io/npm/v/@uptickjs/cosmwasm-stargate.svg)](https://www.npmjs.com/package/@uptickjs/cosmwasm-stargate)
 
-An SDK to build CosmWasm clients.
+An **SDK to build CosmWasm clients on the Uptick chain**. It is a Uptick-flavoured build
+of CosmJS `cosmwasm-stargate`, layered on top of
+[`@uptickjs/stargate`](../stargate) and
+[`@uptickjs/proto-signing`](../proto-signing), so it inherits the Uptick native message
+registry and wallet/signing tooling.
 
-## Compatibility
+## Key exports
 
-| CosmWasm        | x/wasm    | @cosmjs/cosmwasm-stargate |
-| --------------- | --------- | ------------------------- |
-| 0.16-1.0.0-beta | 0.21      | `^0.27.0`                 |
-| 0.16-1.0.0-beta | 0.18-0.20 | `^0.26.0`                 |
-| 0.14            | 0.16      | `^0.25.0`                 |
-| 0.13            | 0.14-0.15 | `^0.24.0`                 |
+- **Clients** — `CosmWasmClient` (read-only contract queries), `SigningCosmWasmClient`
+  (queries + instantiate / execute / migrate), with `SigningCosmWasmClientOptions`
+- **Contract data types** — `Code`, `CodeDetails`, `Contract`, `ContractCodeHistoryEntry`
+- **Binary helpers** — `fromBinary`, `toBinary`
+- **Query extension** — `setupWasmExtension`, `WasmExtension`, `JsonObject`
+- **Amino types** — `cosmWasmTypes`
 
-## Development
+## Example — query and execute a contract
 
-Updating Hackatom development contract in `src/testdata/contract.json`:
+```ts
+import { SigningCosmWasmClient } from "@uptickjs/cosmwasm-stargate";
+import { DirectSecp256k1HdWallet } from "@uptickjs/proto-signing";
+
+const rpcUrl = "https://rpc.uptick.example"; // replace with your Uptick RPC endpoint
+const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, { prefix: "uptick" });
+const [account] = await wallet.getAccounts();
+
+const client = await SigningCosmWasmClient.connectWithSigner(rpcUrl, wallet);
+
+// Query the contract
+const config = await client.queryContractSmart(contractAddress, { get_config: {} });
+
+// Execute the contract
+const msg = { mint: { token_id: "1" } };
+const fee = "auto";
+const result = await client.execute(account.address, contractAddress, msg, fee);
+console.log(result.transactionHash);
+```
+
+## Build & test
 
 ```sh
-cd packages/cosmwasm-stargate
-export HACKATOM_URL=https://github.com/CosmWasm/cosmwasm/releases/download/v1.0.0-beta/hackatom.wasm
-echo "{\"// source\": \"$HACKATOM_URL\", \"data\": \"$(curl -sS  --location $HACKATOM_URL | base64 | tr -d '[:space:]')\" }" | jq > src/testdata/contract.json
+yarn install
+yarn build
+yarn test
 ```
 
 ## License
 
-This package is part of the cosmjs repository, licensed under the Apache License
-2.0 (see [NOTICE](https://github.com/cosmos/cosmjs/blob/main/NOTICE) and
-[LICENSE](https://github.com/cosmos/cosmjs/blob/main/LICENSE)).
+Apache-2.0.

@@ -98,6 +98,10 @@ const nft_transfer_tx_pb = require("@uptickjs/proto-types/src/ibc/applications/n
 //xxl 03
 const cw721_tx_pb = require("@uptickjs/proto-types/src/uptick/cw721/v1/tx_pb")
 
+//xxl 05 - new modules added in chain upgrade
+const nft_v1beta1_tx_pb = require("@uptickjs/proto-types/src/uptick/nft/v1beta1/tx_pb")
+const evm_ibc_tx_pb = require("@uptickjs/proto-types/src/uptick/evm_ibc/v1/tx_pb")
+
 
 import Long from "long";
 
@@ -160,10 +164,6 @@ export const defaultRegistryTypes: ReadonlyArray<[string, GeneratedType]> = [
   ["/uptick.collection.v1.MsgTransferNFT", nft_tx_pb.MsgTransferNFT],
   ["/uptick.collection.v1.MsgTransferDenom", nft_tx_pb.MsgTransferDenom],
 
-  ["/uptick.erc20.v1.MsgConvertERC20", erc20_tx_pb.MsgConvertERC20],
-  ["/uptick.erc20.v1.MsgConvertCoin", erc20_tx_pb.MsgConvertCoin],
-  ["/uptick.erc20.v1.MsgTransferERC20", erc20_tx_pb.MsgTransferERC20],
-
   //xxl 02 list 
   ["/uptick.erc721.v1.MsgConvertERC721", erc721_tx_pb.MsgConvertERC721],
   ["/uptick.erc721.v1.MsgConvertNFT", erc721_tx_pb.MsgConvertNFT],
@@ -176,6 +176,10 @@ export const defaultRegistryTypes: ReadonlyArray<[string, GeneratedType]> = [
   ["/uptick.cw721.v1.MsgConvertCW721", cw721_tx_pb.MsgConvertCW721],
   ["/uptick.cw721.v1.MsgConvertNFT", cw721_tx_pb.MsgConvertNFT],
   ["/uptick.cw721.v1.MsgTransferCW721", cw721_tx_pb.MsgTransferCW721],
+
+  //xxl 05 list - new modules from chain upgrade (erc20 removed, nft + evm_ibc added)
+  ["/uptick.nft.v1beta1.MsgSend", nft_v1beta1_tx_pb.MsgSend],
+  ["/uptick.evm_ibc.v1.MsgTransferERC721", evm_ibc_tx_pb.MsgTransferERC721],
 
 ];
 
@@ -580,10 +584,19 @@ export class SigningStargateClient extends StargateClient {
       throw new Error("Failed to retrieve account from signer");
     }
     const pubkey = encodePubkey(encodeSecp256k1Pubkey(accountFromSigner.pubkey));
-    if(accountFromSigner.address.indexOf("uptick") != -1){
-      pubkey.typeUrl = "/ethermint.crypto.v1.ethsecp256k1.PubKey";
-    }
-    else{
+    if (accountFromSigner.address.indexOf("uptick") != -1) {
+      // Uptick v0.4+ (cosmos/evm, e.g. Origin origin_1170-3) registers
+      // /cosmos.evm.crypto.v1.ethsecp256k1.PubKey. The old ethermint
+      // typeUrl unpacks to *legacy.EthSecp256k1PubKey which fails
+      // unknownproto.Descriptor() checks (tx parse error, codespace sdk/2).
+      // Mainnet v0.3.x still uses the ethermint typeUrl.
+      const isCosmosEvm =
+        typeof chainId === "string" &&
+        (chainId.indexOf("origin") !== -1 || chainId.indexOf("1170") !== -1);
+      pubkey.typeUrl = isCosmosEvm
+        ? "/cosmos.evm.crypto.v1.ethsecp256k1.PubKey"
+        : "/ethermint.crypto.v1.ethsecp256k1.PubKey";
+    } else {
       pubkey.typeUrl = "/cosmos.crypto.secp256k1.PubKey";
     }
 

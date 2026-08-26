@@ -38,7 +38,8 @@ export function encodePubkey(pubkey: Pubkey): Any {
 
 function decodeSinglePubkey(pubkey: Any): SinglePubkey {
   switch (pubkey.typeUrl) {
-    case "/ethermint.crypto.v1.ethsecp256k1.PubKey": 
+    case "/cosmos.evm.crypto.v1.ethsecp256k1.PubKey":
+    case "/ethermint.crypto.v1.ethsecp256k1.PubKey":
     case "/cosmos.crypto.secp256k1.PubKey": {
       const { key } = PubKey.decode(pubkey.value);
 
@@ -72,7 +73,8 @@ export function decodePubkey(pubkey?: Any | null): Pubkey | null {
 
   switch (pubkey.typeUrl) {
 
-    case "/ethermint.crypto.v1.ethsecp256k1.PubKey": 
+    case "/cosmos.evm.crypto.v1.ethsecp256k1.PubKey":
+    case "/ethermint.crypto.v1.ethsecp256k1.PubKey":
     case "/cosmos.crypto.secp256k1.PubKey": {
       return decodeSinglePubkey(pubkey);
     }
