@@ -1,7 +1,7 @@
 {
   "name": "@uptickjs/stargate",
-  "version": "0.27.19",
-  "description": "Utilities for uptick v0.2.7",
+  "version": "0.27.20",
+  "description": "Utilities for uptick v0.5.0",
   "contributors": [
 	 "Uptick <starryrepublican@gmail.com>"
   ],

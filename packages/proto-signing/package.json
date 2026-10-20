@@ -1,7 +1,7 @@
 {
   "name": "@uptickjs/proto-signing",
-  "version": "0.27.18",
-  "description": "Utilities for protobuf based signing (Cosmos SDK 0.46+)",
+  "version": "0.27.20",
+  "description": "Utilities for protobuf based signing (Cosmos SDK v0.53+)",
   "contributors": [
     "Uptick <starryrepublican@gmail.com>"
   ],
